@@ -1,4 +1,4 @@
-import smoothScroll from "./modules/animations/smooth-scroll.js"
+import SmoothScroll from "./modules/animations/smooth-scroll.js"
 import changeAnimalDescription from "./modules/animations/change-animal-description.js"
 import openAndCloseQuestionsInFaq from "./modules/animations/open-and-close-questions-in-faq.js"
 import animateSectionsOnScroll from "./modules/animations/animate-section-on-scroll.js"
@@ -12,7 +12,9 @@ import initializeFetchAnimalsApi from "./modules/fetch-animals-api.js"
 import initializeFetchBitcoinApi from "./modules/fetch-bitcoin.js"
 
 function initializeAnimations() {
-  smoothScroll()
+  const smoothScroll = new SmoothScroll(".menu a[href^='#']")
+  smoothScroll.init()
+
   changeAnimalDescription()
   openAndCloseQuestionsInFaq()
   animateSectionsOnScroll()
