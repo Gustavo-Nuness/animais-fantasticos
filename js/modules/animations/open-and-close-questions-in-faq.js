@@ -1,15 +1,25 @@
-export default function openAndCloseQuestionsInFaq() {
-  const titlesQuestions = document.querySelectorAll(".faq-lista dt")
-  const answerQuestions = document.querySelectorAll(".faq-lista dd")
+export default class OpenAndCloseQuestionsInFaq {
 
-  function openOrCloseAnswerEvent() {
-    this.nextElementSibling.classList.toggle("ativo")
-    this.classList.toggle("ativo")
+  constructor(listTitles, listContents) {
+    if (listTitles && listContents) {
+      this.titlesQuestions = document.querySelectorAll(listTitles)
+      this.answerQuestions = document.querySelectorAll(listContents)
+    }
+    this.activeClassName = "ativo"
   }
 
-  if (titlesQuestions.length && answerQuestions.length) {
-    titlesQuestions.forEach((dt) => {
-      dt.addEventListener("click", openOrCloseAnswerEvent)
-    })
+  openOrCloseAnswerEvent(dt) {
+    dt.nextElementSibling.classList.toggle(this.activeClassName)
+    dt.classList.toggle(this.activeClassName)
+  }
+
+  init() {
+
+    if (this.titlesQuestions.length && this.answerQuestions.length) {
+      this.titlesQuestions.forEach((dt) => {
+        dt.addEventListener("click", () => this.openOrCloseAnswerEvent(dt))
+      })
+    }
+
   }
 }
