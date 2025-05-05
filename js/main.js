@@ -1,6 +1,6 @@
 import SmoothScroll from "./modules/animations/smooth-scroll.js"
 import OpenAndCloseQuestionsInFaq from "./modules/animations/open-and-close-questions-in-faq.js"
-import changeAnimalDescription from "./modules/animations/change-animal-description.js"
+import ChangeAnimalDescription from "./modules/animations/change-animal-description.js"
 import animateSectionsOnScroll from "./modules/animations/animate-section-on-scroll.js"
 
 import initializeModal from "./modules/modal.js"
@@ -18,7 +18,9 @@ function initializeAnimations() {
   const toggleQuestionsInFaq = new OpenAndCloseQuestionsInFaq(".faq-lista dt", ".faq-lista dd")
   toggleQuestionsInFaq.init()
 
-  changeAnimalDescription()
+  const changeAnimalDescription = new ChangeAnimalDescription(".animais-lista li", ".animais-descricao section")
+  changeAnimalDescription.init()
+
   animateSectionsOnScroll()
 }
 
