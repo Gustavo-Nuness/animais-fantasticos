@@ -1,33 +1,38 @@
-export default function changeAnimalDescription() {
-  const tabMenu = document.querySelectorAll(".animais-lista li")
-  const tabContent = document.querySelectorAll(".animais-descricao section")
+export default class ChangeAnimalDescription {
 
-  function activeTabAnimalDescription(animal) {
-    tabContent.forEach((section) => {
+  constructor(menu, content) {
+    this.tabMenu = document.querySelectorAll(menu)
+    this.tabContent = document.querySelectorAll(content)
+    this.activeClass = "ativo"
+    this.disabledClass = "desativo"
+  }
+
+
+  activeTabAnimalDescription(animal) {
+    this.tabContent.forEach((section) => {
       if (section.dataset.animal === animal) {
-        section.classList.add("ativo")
-        section.classList.remove("desativo")
-        addAnimationClassToSection(section)
+        section.classList.add(this.activeClass)
+        section.classList.remove(this.disabledClass)
+        section.classList.add(section.dataset.anime)
       } else {
-        section.classList.remove("ativo")
-        section.classList.add("desativo")
+        section.classList.remove(this.activeClass)
+        section.classList.add(this.disabledClass)
       }
     })
   }
 
-  function addAnimationClassToSection(section) {
-    if (section.dataset.anime === "show-down") {
-      section.classList.add("show-down")
-    } else {
-      section.classList.add("show-right")
-    }
-  }
-
-  if (tabMenu.length > 0 && tabContent.length > 0) {
-    tabMenu.forEach((li) => {
-      li.addEventListener("click", function () {
-        activeTabAnimalDescription(li.dataset.animal)
+  addClickEventToTabMenu() {
+    this.tabMenu.forEach((li) => {
+      li.addEventListener("click", () => {
+        this.activeTabAnimalDescription(li.dataset.animal)
       })
     })
   }
+
+  init() {
+    if (this.tabMenu.length > 0 && this.tabContent.length > 0) {
+      this.addClickEventToTabMenu()
+    }
+  }
+
 }
