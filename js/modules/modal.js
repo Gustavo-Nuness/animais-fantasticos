@@ -1,24 +1,32 @@
-export default function initializeModal() {
-  const linkThatOpensModal = document.querySelector("[data-modal='abrir']")
+export default class Modal {
 
-  const buttonThatClosesModal = document.querySelector("[data-modal='fechar']")
+  constructor(linkThatOpensModal, buttonThatClosesModal, containerModal) {
+    this.linkThatOpensModal = document.querySelector(linkThatOpensModal)
 
-  const containerModal = document.querySelector("[data-modal='container']")
+    this.buttonThatClosesModal = document.querySelector(buttonThatClosesModal)
 
-  function toggleModal(event) {
-    event.preventDefault()
-    containerModal.classList.toggle("ativo")
+    this.containerModal = document.querySelector(containerModal)
+
+    this.toggleModal = this.toggleModal.bind(this)
+    this.clickOutsideModal = this.clickOutsideModal.bind(this)
   }
-  function clickOutsideModal(event) {
-    if (event.target === this) {
-      toggleModal(event)
+
+  toggleModal(event) {
+    event.preventDefault()
+    this.containerModal.classList.toggle("ativo")
+  }
+  clickOutsideModal(event) {
+    if (event.target === this.containerModal) {
+      this.toggleModal(event)
     }
   }
 
-  if (linkThatOpensModal && buttonThatClosesModal && containerModal) {
-    linkThatOpensModal.addEventListener("click", toggleModal)
-    buttonThatClosesModal.addEventListener("click", toggleModal)
-    containerModal.addEventListener("click", clickOutsideModal)
+  init() {
+    if (this.linkThatOpensModal && this.buttonThatClosesModal && this.containerModal) {
+      this.linkThatOpensModal.addEventListener("click", this.toggleModal)
+      this.buttonThatClosesModal.addEventListener("click", this.toggleModal)
+      this.containerModal.addEventListener("click", this.clickOutsideModal)
 
+    }
   }
 }

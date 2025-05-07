@@ -3,7 +3,7 @@ import OpenAndCloseQuestionsInFaq from "./modules/animations/open-and-close-ques
 import ChangeAnimalDescription from "./modules/animations/change-animal-description.js"
 import animateSectionsOnScroll from "./modules/animations/animate-section-on-scroll.js"
 
-import initializeModal from "./modules/modal.js"
+import Modal from "./modules/modal.js"
 import initializeTooltip from "./modules/tooltip.js"
 import initializeDropdownMenu from "./modules/dropdown-menu.js"
 import initializeMenuMobile from "./modules/menu-mobile.js"
@@ -25,7 +25,10 @@ function initializeAnimations() {
 }
 
 initializeAnimations()
-initializeModal()
+
+const modal = new Modal("[data-modal='abrir']", "[data-modal='fechar']", "[data-modal='container']")
+modal.init()
+
 initializeTooltip()
 initializeDropdownMenu()
 initializeMenuMobile()
