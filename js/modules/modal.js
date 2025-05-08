@@ -28,5 +28,6 @@ export default class Modal {
       this.containerModal.addEventListener("click", this.clickOutsideModal)
 
     }
+    return this
   }
 }

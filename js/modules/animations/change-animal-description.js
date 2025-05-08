@@ -33,6 +33,7 @@ export default class ChangeAnimalDescription {
     if (this.tabMenu.length > 0 && this.tabContent.length > 0) {
       this.addClickEventToTabMenu()
     }
+    return this
   }
 
 }

@@ -20,6 +20,6 @@ export default class OpenAndCloseQuestionsInFaq {
         dt.addEventListener("click", () => this.openOrCloseAnswerEvent(dt))
       })
     }
-
+    return this
   }
 }
