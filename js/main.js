@@ -4,7 +4,7 @@ import ChangeAnimalDescription from "./modules/animations/change-animal-descript
 import animateSectionsOnScroll from "./modules/animations/animate-section-on-scroll.js"
 
 import Modal from "./modules/modal.js"
-import initializeTooltip from "./modules/tooltip.js"
+import Tooltip from "./modules/tooltip.js"
 import initializeDropdownMenu from "./modules/dropdown-menu.js"
 import initializeMenuMobile from "./modules/menu-mobile.js"
 import initializeOpeningStatus from "./modules/opening-status.js"
@@ -29,7 +29,9 @@ initializeAnimations()
 const modal = new Modal("[data-modal='abrir']", "[data-modal='fechar']", "[data-modal='container']")
 modal.init()
 
-initializeTooltip()
+const tooltip = new Tooltip("[data-tooltip]")
+tooltip.init()
+
 initializeDropdownMenu()
 initializeMenuMobile()
 initializeOpeningStatus()
