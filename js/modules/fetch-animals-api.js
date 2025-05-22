@@ -1,4 +1,4 @@
-import numbersAnimations from "./animations/numbers-animations.js"
+import NumbersAnimations from "./animations/numbers-animations.js"
 
 export default async function fetchAnimalsApi() {
   try {
@@ -11,7 +11,8 @@ export default async function fetchAnimalsApi() {
       numerosGrid.appendChild(divAnimal)
     })
 
-    numbersAnimations()
+    const numbersAnimations = new NumbersAnimations("[data-numero]", ".numeros", "ativo")
+    numbersAnimations.init()
 
   } catch (error) {
     console.log(error)
