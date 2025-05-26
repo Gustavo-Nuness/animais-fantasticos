@@ -1,8 +1,8 @@
-export default function fetchBitcoinApi() {
+export default function fetchBitcoinApi(elementTarget) {
   const urlBitcoinApi = "https://blockchain.info/ticker"
 
   const promise = fetch(urlBitcoinApi)
-  const bitcoinDonationValue = document.querySelector(".bitcoin-goal")
+  const bitcoinDonationValue = document.querySelector(elementTarget)
 
   // console.log(bitcoinDonationValue)
 
