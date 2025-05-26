@@ -8,7 +8,7 @@ import Tooltip from "./modules/tooltip.js"
 import initializeDropdownMenu from "./modules/dropdown-menu.js"
 import initializeMenuMobile from "./modules/menu-mobile.js"
 import initializeOpeningStatus from "./modules/opening-status.js"
-import initializeFetchAnimalsApi from "./modules/fetch-animals-api.js"
+import fetchAnimals from "./modules/fetch-animals-api.js"
 import initializeFetchBitcoinApi from "./modules/fetch-bitcoin.js"
 
 function initializeAnimations() {
@@ -35,5 +35,5 @@ tooltip.init()
 initializeDropdownMenu()
 initializeMenuMobile()
 initializeOpeningStatus()
-initializeFetchAnimalsApi()
+fetchAnimals("./../animals-api.json", ".numeros-grid")
 initializeFetchBitcoinApi()

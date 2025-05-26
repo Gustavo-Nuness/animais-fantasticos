@@ -1,27 +1,41 @@
 import NumbersAnimations from "./animations/numbers-animations.js"
 
-export default async function fetchAnimalsApi() {
-  try {
-    const response = await fetch("./../../animals-api.json")
-    const animals = await response.json()
-    const numerosGrid = document.querySelector(".numeros-grid")
+export default async function fetchAnimals(animalsUrl, target) {
 
-    animals.forEach((animal) => {
-      const divAnimal = createAnimal(animal)
-      numerosGrid.appendChild(divAnimal)
-    })
+  const numerosGrid = document.querySelector(target)
 
-    const numbersAnimations = new NumbersAnimations("[data-numero]", ".numeros", "ativo")
-    numbersAnimations.init()
+  async function getAnimalsWithFetch() {
+    try {
 
-  } catch (error) {
-    console.log(error)
+      const response = await fetch(animalsUrl)
+      const animals = await response.json()
+
+      animals.forEach((animal) => addAnimalDivToDom(animal))
+
+      initNumbersAnimations()
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  function createAnimal(animal) {
+  function addAnimalDivToDom(animal) {
+    const divAnimal = createAnimalDiv(animal)
+    numerosGrid.appendChild(divAnimal)
+  }
+
+  function createAnimalDiv(animal) {
     const div = document.createElement("div")
     div.classList.add("numero-animal")
     div.innerHTML = `<h3>${animal.specie}</h3><span data-numero>${animal.total}</span>`
     return div
   }
+
+  function initNumbersAnimations() {
+    const numbersAnimations = new NumbersAnimations("[data-numero]", ".numeros", "ativo")
+    numbersAnimations.init()
+  }
+
+
+  getAnimalsWithFetch()
 }
