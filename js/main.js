@@ -1,7 +1,7 @@
 import SmoothScroll from "./modules/animations/smooth-scroll.js"
 import OpenAndCloseQuestionsInFaq from "./modules/animations/open-and-close-questions-in-faq.js"
 import ChangeAnimalDescription from "./modules/animations/change-animal-description.js"
-import animateSectionsOnScroll from "./modules/animations/animate-section-on-scroll.js"
+import AnimateSectionsOnScroll from "./modules/animations/animate-section-on-scroll.js"
 
 import Modal from "./modules/modal.js"
 import Tooltip from "./modules/tooltip.js"
@@ -21,7 +21,8 @@ function initializeAnimations() {
   const changeAnimalDescription = new ChangeAnimalDescription(".animais-lista li", ".animais-descricao section")
   changeAnimalDescription.init()
 
-  animateSectionsOnScroll()
+  const animateSectionsOnScroll = new AnimateSectionsOnScroll(".animate-section-on-scroll")
+  animateSectionsOnScroll.init()
 }
 
 initializeAnimations()

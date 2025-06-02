@@ -1,8 +1,14 @@
-export default function animateSectionsOnScroll() {
-  const sections = document.querySelectorAll(".animate-section-on-scroll")
+export default class AnimateSectionsOnScroll {
 
-  function animateOnScrollEvent() {
-    sections.forEach((section) => {
+  constructor(sections) {
+    this.sections = document.querySelectorAll(sections)
+
+    this.animateOnScrollEvent = this.animateOnScrollEvent.bind(this)
+
+  }
+
+  animateOnScrollEvent() {
+    this.sections.forEach((section) => {
       const sectionDistanceFromTop = section.getBoundingClientRect().top
       const windowHeight = window.innerHeight
       const halfWindownHeight = windowHeight * 0.65
@@ -14,6 +20,10 @@ export default function animateSectionsOnScroll() {
       }
     })
   }
-  animateOnScrollEvent()
-  window.addEventListener("scroll", animateOnScrollEvent)
+
+  init() {
+    this.animateOnScrollEvent()
+    window.addEventListener("scroll", this.animateOnScrollEvent)
+
+  }
 }
