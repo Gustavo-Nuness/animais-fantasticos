@@ -1,29 +1,53 @@
 export default class AnimateSectionsOnScroll {
 
   constructor(sections) {
+
     this.sections = document.querySelectorAll(sections)
 
-    this.animateOnScrollEvent = this.animateOnScrollEvent.bind(this)
+    const windowHeight = window.innerHeight
+    this.halfWindownHeight = windowHeight * 0.65
+
+    this.checkSectionsDistanceFromPageStart =
+      this.checkSectionsDistanceFromPageStart.bind(this)
 
   }
 
-  animateOnScrollEvent() {
-    this.sections.forEach((section) => {
-      const sectionDistanceFromTop = section.getBoundingClientRect().top
-      const windowHeight = window.innerHeight
-      const halfWindownHeight = windowHeight * 0.65
+  getSectionsDistanceFromPageStart() {
 
-      const isSectionOpenable = sectionDistanceFromTop - halfWindownHeight < 0
-
-      if (isSectionOpenable) {
-        section.classList.add("ativo")
+    this.sectionsDistanceFromTop = [...this.sections].map((section) => {
+      const offsetTop = section.offsetTop
+      return {
+        section,
+        offsetTop: Math.floor(offsetTop - this.halfWindownHeight)
       }
     })
   }
 
-  init() {
-    this.animateOnScrollEvent()
-    window.addEventListener("scroll", this.animateOnScrollEvent)
+  checkSectionsDistanceFromPageStart() {
+
+    this.sectionsDistanceFromTop.forEach((element) => {
+      const isSectionOpenable = window.pageYOffset > element.offsetTop
+
+      if (isSectionOpenable) {
+        element.section.classList.add("ativo")
+      }
+    })
 
   }
+
+
+  init() {
+    if (this.sections.length) {
+
+      this.getSectionsDistanceFromPageStart()
+      this.checkSectionsDistanceFromPageStart()
+      window.addEventListener("scroll", this.checkSectionsDistanceFromPageStart)
+
+    }
+
+    return this
+  }
+
 }
+
+
