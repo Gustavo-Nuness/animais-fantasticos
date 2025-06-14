@@ -124,6 +124,10 @@ body {
   margin-bottom: 3rem;
 }
 
+.animais-descricao p {
+  text-align: justify;
+}
+
 .faq-lista {
   grid-column: 2 / 4;
 }
