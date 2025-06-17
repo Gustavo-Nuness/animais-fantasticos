@@ -1,3 +1,5 @@
+import debounce from "./../debounce.js"
+
 export default class AnimateSectionsOnScroll {
 
   constructor(sections) {
@@ -8,7 +10,7 @@ export default class AnimateSectionsOnScroll {
     this.halfWindownHeight = windowHeight * 0.65
 
     this.checkSectionsDistanceFromPageStart =
-      this.checkSectionsDistanceFromPageStart.bind(this)
+      debounce(this.checkSectionsDistanceFromPageStart.bind(this), 100)
 
   }
 
