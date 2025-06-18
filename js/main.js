@@ -5,11 +5,12 @@ import AnimateSectionsOnScroll from "./modules/animations/animate-section-on-scr
 
 import Modal from "./modules/modal.js"
 import Tooltip from "./modules/tooltip.js"
-import initializeDropdownMenu from "./modules/dropdown-menu.js"
+import DropdownMenu from "./modules/dropdown-menu.js"
 import initializeMenuMobile from "./modules/menu-mobile.js"
 import initializeOpeningStatus from "./modules/opening-status.js"
 import fetchAnimals from "./modules/fetch-animals-api.js"
 import fetchBitcoin from "./modules/fetch-bitcoin.js"
+
 
 function initializeAnimations() {
   const smoothScroll = new SmoothScroll(".menu a[href^='#']")
@@ -33,7 +34,10 @@ modal.init()
 const tooltip = new Tooltip("[data-tooltip]")
 tooltip.init()
 
-initializeDropdownMenu()
+
+const dropdownMenu = new DropdownMenu("[data-dropdown]")
+dropdownMenu.init()
+
 initializeMenuMobile()
 initializeOpeningStatus()
 fetchAnimals("./../animals-api.json", ".numeros-grid")
