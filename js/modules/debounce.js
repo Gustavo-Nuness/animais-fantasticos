@@ -7,7 +7,6 @@ export default function debounce(callback, delay) {
     }
 
     timer = setTimeout(() => {
-      console.log("executou o callback!")
       callback(...args);
       timer = null;
 
