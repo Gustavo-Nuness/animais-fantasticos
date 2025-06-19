@@ -10,7 +10,7 @@ export default class AnimateSectionsOnScroll {
     this.halfWindownHeight = windowHeight * 0.65
 
     this.checkSectionsDistanceFromPageStart =
-      debounce(this.checkSectionsDistanceFromPageStart.bind(this), 100)
+      debounce(this.checkSectionsDistanceFromPageStart.bind(this), 50)
 
   }
 
