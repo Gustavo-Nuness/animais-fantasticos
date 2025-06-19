@@ -6,7 +6,7 @@ import AnimateSectionsOnScroll from "./modules/animations/animate-section-on-scr
 import Modal from "./modules/modal.js"
 import Tooltip from "./modules/tooltip.js"
 import DropdownMenu from "./modules/dropdown-menu.js"
-import initializeMenuMobile from "./modules/menu-mobile.js"
+import MenuMobile from "./modules/menu-mobile.js"
 import initializeOpeningStatus from "./modules/opening-status.js"
 import fetchAnimals from "./modules/fetch-animals-api.js"
 import fetchBitcoin from "./modules/fetch-bitcoin.js"
@@ -38,7 +38,10 @@ tooltip.init()
 const dropdownMenu = new DropdownMenu("[data-dropdown]")
 dropdownMenu.init()
 
-initializeMenuMobile()
+const menuMobile = new MenuMobile("[data-menu='button']", "[data-menu='list']")
+menuMobile.init()
+
 initializeOpeningStatus()
+
 fetchAnimals("./../animals-api.json", ".numeros-grid")
 fetchBitcoin(".bitcoin-goal")
