@@ -1,27 +1,68 @@
-export default function initializeOpeningStatus() {
-  const openingDays = document
-    .querySelector("[data-semana]")
-    .dataset.semana.split(",")
-    .map(Number)
+export default class OpeningStatus {
 
-  const openingHours = document
-    .querySelector("[data-horario]")
-    .dataset.horario.split(",")
-    .map(Number)
 
-  const currentDate = new Date()
-  const currentDay = currentDate.getDay()
-  const currentHour = currentDate.getHours()
+  /*
+    openingDays -> um paramêtro que deve ser setado com o seletor de css para localizar
+    o elemento HTML que possui o atributo data-semana.
 
-  const isOpenInCurrentDay = openingDays.includes(currentDay)
-  const isOpenInCurrentHour =
-    currentHour >= openingHours[0] && currentHour < openingHours[1]
+    openingHours -> um paramêtro que deve ser setado com o seletor de css para localizar
+    o elemento HTML que possui o atributo data-horario.
+  */
+  constructor(openingDays, openingHours) {
+    this.openingDays = document
+      .querySelector(openingDays)
+      .dataset.semana.split(",")
+      .map(Number)
 
-  const liWorkingStatus = document.querySelector("[data-semana]")
+    this.openingHours = document
+      .querySelector(openingHours)
+      .dataset.horario.split(",")
+      .map(Number)
 
-  if (isOpenInCurrentDay && isOpenInCurrentHour) {
-    liWorkingStatus.classList.add("opened")
-  } else {
-    liWorkingStatus.classList.add("closed")
+    this.liWorkingStatus = document.querySelector("[data-semana]")
+
+    this.openedClass = "opened"
+    this.closedClass = "closed"
   }
+
+  getCurrentTime() {
+
+    this.currentDate = new Date()
+    this.currentDay = this.currentDate.getDay()
+    this.currentHour = this.currentDate.getUTCHours() - 3
+
+  }
+
+  checkOpeningStatus() {
+
+    this.getCurrentTime()
+
+    const isOpenInCurrentDay = this.openingDays.includes(this.currentDay)
+    const isOpenInCurrentHour =
+      this.currentHour >= this.openingHours[0] && this.currentHour < this.openingHours[1]
+
+    if (isOpenInCurrentDay && isOpenInCurrentHour) {
+      this.toogleOpeningStatus(this.openedClass)
+    } else {
+      this.toogleOpeningStatus(this.closedClass)
+    }
+
+    return isOpenInCurrentDay && isOpenInCurrentHour
+
+  }
+
+  toogleOpeningStatus(cssClass) {
+    this.liWorkingStatus.classList.add(cssClass)
+  }
+
+
+  init() {
+
+    if (this.openingDays && this.openingHours) {
+      this.checkOpeningStatus()
+    }
+    return this
+
+  }
+
 }

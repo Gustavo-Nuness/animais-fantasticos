@@ -7,7 +7,7 @@ import Modal from "./modules/modal.js"
 import Tooltip from "./modules/tooltip.js"
 import DropdownMenu from "./modules/dropdown-menu.js"
 import MenuMobile from "./modules/menu-mobile.js"
-import initializeOpeningStatus from "./modules/opening-status.js"
+import OpeningStatus from "./modules/opening-status.js"
 import fetchAnimals from "./modules/fetch-animals-api.js"
 import fetchBitcoin from "./modules/fetch-bitcoin.js"
 
@@ -41,7 +41,8 @@ dropdownMenu.init()
 const menuMobile = new MenuMobile("[data-menu='button']", "[data-menu='list']")
 menuMobile.init()
 
-initializeOpeningStatus()
+const openingStatus = new OpeningStatus("[data-semana]", "[data-horario]")
+openingStatus.init()
 
 fetchAnimals("./../animals-api.json", ".numeros-grid")
 fetchBitcoin(".bitcoin-goal")
