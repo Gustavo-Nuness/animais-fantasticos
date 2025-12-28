@@ -10,6 +10,7 @@ import MenuMobile from "./modules/menu-mobile.js"
 import OpeningStatus from "./modules/opening-status.js"
 import fetchAnimals from "./modules/fetch-animals-api.js"
 import fetchBitcoin from "./modules/fetch-bitcoin.js"
+import SlideNav from './modules/slide.js';
 
 
 function initializeAnimations() {
@@ -46,3 +47,7 @@ openingStatus.init()
 
 fetchAnimals("./../animals-api.json", ".numeros-grid")
 fetchBitcoin(".bitcoin-goal")
+
+const slide = new SlideNav(".slide", ".slide-container", ".arrow-previous-button",
+  ".arrow-next-button", ".custom-controls")
+

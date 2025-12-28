@@ -32,6 +32,7 @@ export default [
         "blockScopedFunctions":
           "disallow"
       },],
+      "no-unused-vars":"warn",
     },
 
   },
