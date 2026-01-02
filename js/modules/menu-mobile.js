@@ -9,7 +9,7 @@ export default class MenuMobile {
     this.activeClass = "active"
 
     if (events === undefined) {
-      this.events = ["touchstart", "click"]
+      this.events = ["touchend", "click"]
     } else {
       this.events = events
     }
@@ -29,7 +29,8 @@ export default class MenuMobile {
     return this
   }
 
-  openMenu() {
+  openMenu(event) {
+
     this.menuButton.classList.add(this.activeClass)
     this.menuList.classList.add(this.activeClass)
 
