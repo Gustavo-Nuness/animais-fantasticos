@@ -19,6 +19,7 @@
     align-items: center;
     position: relative;
     z-index: 300;
+    touch-action: none;
   }
 
   [data-menu="button"]::before {
@@ -31,7 +32,7 @@
     margin-right: 4px;
     transition: transform 0.3s;
   }
-  
+
   [data-menu="button"].active::before {
     transform: rotate(90deg);
   }
@@ -46,10 +47,12 @@
     top: 0;
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
   }
+
   #menu[data-menu="list"].active {
     display: block;
     animation: show-right 0.3s forwards;
   }
+
   .dropdown-menu {
     position: static !important;
     border: none;
